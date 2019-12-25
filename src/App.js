@@ -82,7 +82,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.tick();
+    //this.tick();
   }
 
   tick() {
@@ -115,10 +115,20 @@ class App extends React.Component {
         rows={Math.round(resolution - (((layerIndex) / (layerCount + 1)) * resolution))}
         columns={Math.round(resolution - (((layerIndex) / (layerCount + 1)) * resolution))}
       />
-    ))
+    ));
+
+    const treeElement = (
+      <div style={{ position: 'absolute', left: 'calc(50vw - 100px)', top: 'calc(50vh - 200px)', width: 200, height: 340, backgroundColor: 'transparent' }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, borderLeft: '100px solid transparent', borderRight: '100px solid transparent', borderBottom: '100px solid green', backgroundColor: 'transparent', width: 0, height: 0 }}></div>
+        <div style={{ position: 'absolute', left: 0, top: 80, borderLeft: '100px solid transparent', borderRight: '100px solid transparent', borderBottom: '100px solid green', backgroundColor: 'transparent', width: 0, height: 0 }}></div>
+        <div style={{ position: 'absolute', left: 0, top: 160, borderLeft: '100px solid transparent', borderRight: '100px solid transparent', borderBottom: '100px solid green', backgroundColor: 'transparent', width: 0, height: 0 }}></div>
+        <div style={{ position: 'absolute', left: 80, top: 260, width: 40, height: 80, backgroundColor: 'brown' }}></div>
+      </div>
+    )
 
     return (
       <div style={outerContainerStyles}>
+        {treeElement}
         {layerElements}
       </div>
     );
