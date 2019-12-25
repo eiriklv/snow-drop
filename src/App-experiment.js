@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import randomSeed from 'random-seed';
-import * as modulo from 'mod-op';
 
 function createArray(len, val) {
   return Array(len).fill(val);
@@ -18,22 +17,23 @@ class Layer extends React.Component {
     const rand = this.rand;
     rand.initState();
 
-    const { time, rows, columns, size, speed } = this.props;
-
-    const verticalSpeed = speed;
+    const { time, rows, columns, size, vSpeed, hSpeed, hAmplitude } = this.props;
+    const verticalSpeed = vSpeed;
     const verticalAmplitude = 5;
-    const horizontalSpeed = 0.2;
-    const horizontalAmplitude = 2;
+    const horizontalFrequency = 0.2;
+    const horizontalAmplitude = hAmplitude;
     const horizontalPhase = 1000000;
+    const horizontalSpeed = hSpeed;
     const snowFlakes = createArray(rows, createArray(columns));
 
     const snowFlakeElements = snowFlakes
     .map((row, rowIndex) => {
       return row.map((flake, flakeIndex) => {
+        const randomizedVerticalSpeed = verticalSpeed + rand.floatBetween(-0.0 * verticalSpeed, 0.0 * verticalSpeed);
         const verticalOffset = (rowIndex * (100 / (snowFlakes.length))) + rand.floatBetween(-verticalAmplitude, verticalAmplitude);
-        const verticalPosition = ((verticalSpeed * time / 100) + verticalOffset) % 100;
-        const horizontalOffset = horizontalAmplitude * Math.sin(horizontalSpeed * (time + (rowIndex * horizontalPhase / 100) + (flakeIndex * horizontalPhase / 100)) / 100);
-        const horizontalPosition = modulo(flakeIndex * (100 / (row.length)) + horizontalOffset, 100);
+        const verticalPosition = ((randomizedVerticalSpeed * time / 100) + verticalOffset) % 100;
+        const horizontalOffset = horizontalAmplitude * Math.sin(horizontalFrequency * (time + (rowIndex * horizontalPhase / 100) + (flakeIndex * horizontalPhase / 100)) / 100) + (horizontalSpeed * time / 100);
+        const horizontalPosition = (flakeIndex * (100 / (row.length)) + horizontalOffset + rand.floatBetween(- 0.0 * (100 / snowFlakes.length), 0.0 * (100 / snowFlakes.length))) % 100;
 
         const flakeStyles = {
           position: 'absolute',
@@ -60,6 +60,7 @@ class Layer extends React.Component {
       height: '100vh',
       background: 'transparent',
       position: 'absolute',
+      opacity: 0.9,
     };
 
     return (
@@ -101,25 +102,44 @@ class App extends React.Component {
       position: 'relative',
     };
 
-    const layerCount = 5;
-    const size = 1;
-    const layers = createArray(layerCount);
-    const speed = 0.2;
-    const resolution = 20;
-
-    const layerElements = layers.map((layer, layerIndex) => (
-      <Layer
-        time={time}
-        speed={speed * (layerIndex + 1)}
-        size={size * (layerIndex + 1)}
-        rows={Math.round(resolution - (((layerIndex) / (layerCount + 1)) * resolution))}
-        columns={Math.round(resolution - (((layerIndex) / (layerCount + 1)) * resolution))}
-      />
-    ))
-
     return (
       <div style={outerContainerStyles}>
-        {layerElements}
+        <Layer
+          time={time}
+          vSpeed={0.3}
+          hSpeed={0.2}
+          hAmplitude={0.2}
+          size={1}
+          rows={20}
+          columns={20}
+        />
+        <Layer
+          time={time}
+          vSpeed={0.5}
+          hSpeed={0.4}
+          hAmplitude={0.5}
+          size={3}
+          rows={15}
+          columns={15}
+        />
+        <Layer
+          time={time}
+          vSpeed={0.8}
+          hSpeed={0.6}
+          hAmplitude={1}
+          size={5}
+          rows={12}
+          columns={12}
+        />
+        <Layer
+          time={time}
+          vSpeed={1}
+          hSpeed={0.8}
+          hAmplitude={2}
+          size={7}
+          rows={5}
+          columns={5}
+        />
       </div>
     );
   }
