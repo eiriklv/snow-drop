@@ -82,7 +82,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //this.tick();
+    this.tick();
   }
 
   tick() {
