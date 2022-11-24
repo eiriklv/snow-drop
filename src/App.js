@@ -134,8 +134,9 @@ class App extends React.Component {
     return (
       <div style={outerContainerStyles}>
         <Ground />
+        {layerElements.slice(0, -2)}
         <Tree left={100} top={100} scale={1.2} />
-        {layerElements}
+        {layerElements.slice(-2)}
       </div>
     );
   }
