@@ -2,10 +2,12 @@
   "name": "snow-drop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://eiriklv.github.io/snow-drop",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "gh-pages": "^4.0.0",
     "mod-op": "^1.0.1",
     "random-seed": "^0.3.0",
     "react": "^16.12.0",
@@ -13,6 +15,8 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
