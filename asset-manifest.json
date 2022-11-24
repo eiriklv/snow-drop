@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/snow-drop/static/css/main.5e32977d.chunk.css",
+    "main.js": "/snow-drop/static/js/main.bd44b1c3.chunk.js",
+    "main.js.map": "/snow-drop/static/js/main.bd44b1c3.chunk.js.map",
+    "runtime-main.js": "/snow-drop/static/js/runtime-main.c99a6bef.js",
+    "runtime-main.js.map": "/snow-drop/static/js/runtime-main.c99a6bef.js.map",
+    "static/js/2.adef8ef0.chunk.js": "/snow-drop/static/js/2.adef8ef0.chunk.js",
+    "static/js/2.adef8ef0.chunk.js.map": "/snow-drop/static/js/2.adef8ef0.chunk.js.map",
+    "index.html": "/snow-drop/index.html",
+    "precache-manifest.a048bf4e6669580d5f07819dbd27836b.js": "/snow-drop/precache-manifest.a048bf4e6669580d5f07819dbd27836b.js",
+    "service-worker.js": "/snow-drop/service-worker.js",
+    "static/css/main.5e32977d.chunk.css.map": "/snow-drop/static/css/main.5e32977d.chunk.css.map",
+    "static/js/2.adef8ef0.chunk.js.LICENSE": "/snow-drop/static/js/2.adef8ef0.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c99a6bef.js",
+    "static/js/2.adef8ef0.chunk.js",
+    "static/css/main.5e32977d.chunk.css",
+    "static/js/main.bd44b1c3.chunk.js"
+  ]
+}
